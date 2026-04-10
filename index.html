@@ -434,6 +434,34 @@
     margin: 0;
   }
   input[type="number"] { -moz-appearance: textfield; }
+
+  /* Light theme */
+  body.light {
+    --bg-primary: #f2f3f6;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8f9fb;
+    --border: #d5d8e2;
+    --border-glow: #c0c4d4;
+    --border-focus: #4f6ef7;
+    --text-primary: #0e1017;
+    --text-secondary: #4a4e5e;
+    --text-muted: #7b809a;
+    --accent-cyan: #0088cc;
+    --accent-cyan-dim: #0088cc15;
+    --accent-green: #00a86b;
+    --accent-green-dim: #00a86b15;
+    --accent-amber: #c98600;
+    --accent-amber-dim: #c9860012;
+    --accent-amber-fill: #e6a200;
+    --accent-rose: #d42e4a;
+    --accent-rose-dim: #d42e4a12;
+    --accent-purple: #7c5cbf;
+    --accent-purple-dim: #7c5cbf12;
+  }
+  body.light::before, body.light::after { background: none; }
+  body.light .quick-btn.active { color: #fff; background: var(--accent-amber-fill); border-color: var(--accent-amber-fill); }
+  body.light .card.cyan .glow, body.light .card.rose .glow { opacity: 0.08; }
+  body.light input[type="range"]::-webkit-slider-thumb { border-color: #fff; box-shadow: 0 2px 10px rgba(198,134,0,0.3); }
 </style>
 </head>
 <body>
@@ -596,6 +624,9 @@
 
   updateSliderFill();
   updateBtns();
+
+  // Theme from URL param
+  if (new URLSearchParams(location.search).get('theme') === 'light') document.body.classList.add('light');
 </script>
 </body>
 </html>
